@@ -16,7 +16,7 @@ export default function Header() {
               <Link to={"/"}>About</Link>
               <Link to={"/"}>Shop</Link>
             </Flex>
-            <Button className="flex items-center py-[6px] px-[12px] border border-[#212529] rounded-lg cursor-pointer hover:bg-[black] duration-[200ms] hover:text-white">
+            <Button className="flex items-center py-[6px] px-[12px] border border-[#212529] rounded-lg cursor-pointer hover:bg-[black] duration-[200ms] hover:text-white" >
               <FaCartShopping className="mr-1"/>
               <Link to={"/"} >Cart</Link>
               <span className="badge bg-black text-white rounded-full ms-1 px-2 text-[16px]">0</span>

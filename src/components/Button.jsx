@@ -28,6 +28,7 @@ export default function Button ({
         <button 
             style={Object.assign( button({px, py, rounded, text, bgColor, hoverBgColor}), style)}
             className={props.className}
+            onClick={props.onClick}
         >
             {props.children}
         </button>

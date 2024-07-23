@@ -1,6 +1,6 @@
 const flexStyles = ({alignItems,justifyContent,direction,...props})=> ({
     display: props.flex ? 'inline-flex' : 'flex',
-    alignItems: 'center',
+    alignItems,
     justifyContent,
     flexDirection: direction,
 })

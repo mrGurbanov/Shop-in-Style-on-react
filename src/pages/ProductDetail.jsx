@@ -2,28 +2,40 @@ import { useParams } from "react-router-dom";
 import Flex from "../components/Flex";
 import Container from "../components/Container";
 import Input from "../components/Input";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 export default function ProductDetail() {
-  // const { id } = useParams();
+  const { id } = useParams();
+  const [product , setProduct] = useState({});
+
+    const getDada = async () => {
+
+        const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
+        return response;
+    }
+
+    useEffect(() => {
+        getDada().then((res) => setProduct(res.data));
+    }, []);
 
   return (
     <Flex as="section" className={"py-5"}>
       <Container className="my-5 mx-auto">
-        <div className="grid grid-cols-2 ">
-          <div>
-            <img src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="" />
-          </div>
-          <Flex direction={"column"} justifyContent={"center"} className="w-full" >
-            <div flex className="tetx-left">SKU: BST-498</div>
-            <h1>Shop item template</h1>
-            <div className="price">
-              <span className="line-through">$45.00</span>
-              <span>$40.00</span>
+        <div className="grid grid-cols-2 py-5" >
+          <Flex className="w-full grow" justifyContent={"center"}>
+            <img className="w-[500px] overflow-hidden px-6" src={product.image} alt="" />
+          </Flex>
+          <Flex direction={"column"} justifyContent={"center"} alignItems="flex-start" className="w-[636px] px-6" >
+            <div className="mb-1">SKU: BST-498</div>
+            <h1 className="text-5xl mb-2 font-bold">{product.title}</h1>
+            <div className="price text-xl mb-12">
+              <span className="line-through mr-2">$45.00</span>
+              <span>{product.price}</span>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem
-              modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis
-              delectus ipsam minima ea iste laborum vero?
+            <p className="mb-4 text-xl font-light ">
+              {product.description}
             </p>
             <Input />
           </Flex>
